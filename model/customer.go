@@ -1,11 +1,12 @@
 package model
 
-type CustomersResponse struct {
-	Customers []CustomerResponse `json:"customers"`
+type Customers struct {
+	Customers []Customer `json:"customers"`
 }
 
-type CustomerResponse struct {
-	ID int `json:"id" example:"1"` // Customer ID
+type Customer struct {
+	ID   int    `json:"id" example:"1"` // Customer ID
+	Hash string `swaggerignore:"true"`
 	CustomerForCreate
 }
 

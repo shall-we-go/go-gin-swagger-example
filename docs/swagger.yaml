@@ -1,4 +1,39 @@
 definitions:
+  model.Customer:
+    properties:
+      email:
+        description: Customer E-mail
+        example: choo@gmail.com
+        maxLength: 255
+        type: string
+      firstname:
+        description: Customer Firstname
+        example: Choopong
+        maxLength: 255
+        type: string
+      gender:
+        description: Customer Gender
+        type: string
+      id:
+        description: Customer ID
+        example: 1
+        type: integer
+      lastname:
+        description: Customer Lastname
+        example: Choosamer
+        maxLength: 255
+        type: string
+      username:
+        description: Customer Username
+        example: choo
+        maxLength: 255
+        type: string
+    required:
+    - email
+    - firstname
+    - lastname
+    - username
+    type: object
   model.CustomerForCreate:
     properties:
       email:
@@ -55,46 +90,11 @@ definitions:
     - firstname
     - lastname
     type: object
-  model.CustomerResponse:
-    properties:
-      email:
-        description: Customer E-mail
-        example: choo@gmail.com
-        maxLength: 255
-        type: string
-      firstname:
-        description: Customer Firstname
-        example: Choopong
-        maxLength: 255
-        type: string
-      gender:
-        description: Customer Gender
-        type: string
-      id:
-        description: Customer ID
-        example: 1
-        type: integer
-      lastname:
-        description: Customer Lastname
-        example: Choosamer
-        maxLength: 255
-        type: string
-      username:
-        description: Customer Username
-        example: choo
-        maxLength: 255
-        type: string
-    required:
-    - email
-    - firstname
-    - lastname
-    - username
-    type: object
-  model.CustomersResponse:
+  model.Customers:
     properties:
       customers:
         items:
-          $ref: '#/definitions/model.CustomerResponse'
+          $ref: '#/definitions/model.Customer'
         type: array
     type: object
   model.Response:
@@ -111,7 +111,10 @@ info:
     email: support@somewhere.com
     name: API Support
     url: http://somewhere.com/support
-  description: Manageing Customer API
+  description: |-
+    # Manageing Customer API
+
+    ![Sample Image](https://picsum.photos/600/400)
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -131,7 +134,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/model.CustomersResponse'
+            $ref: '#/definitions/model.Customers'
         "400":
           description: Bad Request
           schema:
@@ -151,6 +154,8 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: List Customers
+      tags:
+      - customers
     post:
       consumes:
       - application/json
@@ -185,14 +190,16 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Create Customer
+      tags:
+      - customers
   /api/v1/customers/:id:
     delete:
       consumes:
       - application/json
-      description: Delete customer by ID
+      description: Delete customer by id
       operationId: DeleteCustomer
       parameters:
-      - description: ID of customer to be deleted
+      - description: id of customer to be deleted
         in: path
         name: id
         required: true
@@ -219,13 +226,15 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Delete Customer
+      tags:
+      - customers
     get:
       consumes:
       - application/json
-      description: Get customer by ID
+      description: Get customer by id
       operationId: GetCustomer
       parameters:
-      - description: ID of customer to be gotten
+      - description: id of customer to be gotten
         in: path
         name: id
         required: true
@@ -236,7 +245,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/model.CustomerResponse'
+            $ref: '#/definitions/model.Customer'
         "400":
           description: Bad Request
           schema:
@@ -256,13 +265,15 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Get Customer
+      tags:
+      - customers
     patch:
       consumes:
       - application/json
-      description: Update customer by ID
+      description: Update customer by id
       operationId: UpdateCustomer
       parameters:
-      - description: ID of customer to be updated
+      - description: id of customer to be updated
         in: path
         name: id
         required: true
@@ -295,6 +306,8 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Update Customer
+      tags:
+      - customers
   /healthcheck:
     get:
       description: Health checking for the service
@@ -308,8 +321,8 @@ paths:
             type: string
       summary: Health Check
 schemes:
-- http
 - https
+- http
 securityDefinitions:
   ApiKeyAuth:
     in: header

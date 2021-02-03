@@ -12,7 +12,7 @@ import (
 
 // @title Customers API
 // @version 1.0
-// @description Manageing Customer API
+// @description.markdown
 // @termsOfService http://somewhere.com/
 
 // @contact.name API Support
@@ -22,7 +22,7 @@ import (
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @schemes http https
+// @schemes https http
 
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header

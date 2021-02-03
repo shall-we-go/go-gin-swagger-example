@@ -47,13 +47,16 @@ var doc = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "customers"
+                ],
                 "summary": "List Customers",
                 "operationId": "ListCustomers",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/model.CustomersResponse"
+                            "$ref": "#/definitions/model.Customers"
                         }
                     },
                     "400": {
@@ -94,6 +97,9 @@ var doc = `{
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "customers"
                 ],
                 "summary": "Create Customer",
                 "operationId": "CreateCustomer",
@@ -143,19 +149,22 @@ var doc = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Get customer by ID",
+                "description": "Get customer by id",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "customers"
+                ],
                 "summary": "Get Customer",
                 "operationId": "GetCustomer",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID of customer to be gotten",
+                        "description": "id of customer to be gotten",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -165,7 +174,7 @@ var doc = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/model.CustomerResponse"
+                            "$ref": "#/definitions/model.Customer"
                         }
                     },
                     "400": {
@@ -200,19 +209,22 @@ var doc = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Delete customer by ID",
+                "description": "Delete customer by id",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "customers"
+                ],
                 "summary": "Delete Customer",
                 "operationId": "DeleteCustomer",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID of customer to be deleted",
+                        "description": "id of customer to be deleted",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -251,19 +263,22 @@ var doc = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Update customer by ID",
+                "description": "Update customer by id",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "customers"
+                ],
                 "summary": "Update Customer",
                 "operationId": "UpdateCustomer",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID of customer to be updated",
+                        "description": "id of customer to be updated",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -326,6 +341,50 @@ var doc = `{
         }
     },
     "definitions": {
+        "model.Customer": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstname",
+                "lastname",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "description": "Customer E-mail",
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "choo@gmail.com"
+                },
+                "firstname": {
+                    "description": "Customer Firstname",
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Choopong"
+                },
+                "gender": {
+                    "description": "Customer Gender",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Customer ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "lastname": {
+                    "description": "Customer Lastname",
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Choosamer"
+                },
+                "username": {
+                    "description": "Customer Username",
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "choo"
+                }
+            }
+        },
         "model.CustomerForCreate": {
             "type": "object",
             "required": [
@@ -397,57 +456,13 @@ var doc = `{
                 }
             }
         },
-        "model.CustomerResponse": {
-            "type": "object",
-            "required": [
-                "email",
-                "firstname",
-                "lastname",
-                "username"
-            ],
-            "properties": {
-                "email": {
-                    "description": "Customer E-mail",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "choo@gmail.com"
-                },
-                "firstname": {
-                    "description": "Customer Firstname",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "Choopong"
-                },
-                "gender": {
-                    "description": "Customer Gender",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Customer ID",
-                    "type": "integer",
-                    "example": 1
-                },
-                "lastname": {
-                    "description": "Customer Lastname",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "Choosamer"
-                },
-                "username": {
-                    "description": "Customer Username",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "choo"
-                }
-            }
-        },
-        "model.CustomersResponse": {
+        "model.Customers": {
             "type": "object",
             "properties": {
                 "customers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.CustomerResponse"
+                        "$ref": "#/definitions/model.Customer"
                     }
                 }
             }
@@ -489,9 +504,9 @@ var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
 	Host:        "",
 	BasePath:    "",
-	Schemes:     []string{"http", "https"},
+	Schemes:     []string{"https", "http"},
 	Title:       "Customers API",
-	Description: "Manageing Customer API",
+	Description: "# Manageing Customer API\n\n![Sample Image](https://picsum.photos/600/400)",
 }
 
 type s struct{}

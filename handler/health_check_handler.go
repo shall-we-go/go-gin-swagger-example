@@ -7,12 +7,12 @@ import (
 )
 
 // HealthCheckHandler godoc
-// @Summary Health Check
-// @Description Health checking for the service
-// @ID HealthCheckHandler
-// @Produce plain
-// @Success 200 {string} string "OK"
-// @Router /healthcheck [get]
+// @summary Health Check
+// @description Health checking for the service
+// @id HealthCheckHandler
+// @produce plain
+// @response 200 {string} string "OK"
+// @router /healthcheck [get]
 func HealthCheckHandler(c *gin.Context) {
 	c.String(http.StatusOK, "OK")
 }
