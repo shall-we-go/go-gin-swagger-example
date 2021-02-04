@@ -1,4 +1,4 @@
-module com.github.com/shall-we-go/go-gin-swagger-example
+module github.com/shall-we-go/go-gin-swagger-example
 
 go 1.15
 

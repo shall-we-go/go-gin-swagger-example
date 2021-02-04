@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	_ "com.github.com/shall-we-go/go-gin-swagger-example/docs"
-	"com.github.com/shall-we-go/go-gin-swagger-example/handler"
 	"github.com/gin-gonic/gin"
+	_ "github.com/shall-we-go/go-gin-swagger-example/docs"
+	"github.com/shall-we-go/go-gin-swagger-example/handler"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
