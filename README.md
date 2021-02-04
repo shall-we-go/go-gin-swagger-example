@@ -1,9 +1,12 @@
 # go-gin-swagger-example
 Example of using Go with Gin Web Framework and Swaggo Swagger Framework
 ## Prerequisites
-- Go
-- swag https://github.com/swaggo/swag
+- Docker
+## Run Docker Container
+`$ ./docker-up`
+## Get inside Docker Shell
+`$ ./docker-shell` 
 ## Converts Go annotations to Swagger Documentation 2.0
-`$ swag init --md ./`
+Inside Docker Shell, run command `$ swag init --md ./`
 ## Run
-`$ go run main.go`
+Inside Docker Shell, run command `$ go run main.go`
